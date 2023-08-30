@@ -16,12 +16,8 @@ void version(char *exec) {
 // starts program execution
 int main(int argc, char **argv) {
   int ch, option;
-  while ((ch = getopt(argc, argv, "hvamclw")) != -1) {
+  while ((ch = getopt(argc, argv, "clwmhv")) != -1) {
     switch (ch) {
-    case 'a':
-      option = all;
-      break;
-    case 'm':
     case 'c':
       option = byte_count;
       break;
