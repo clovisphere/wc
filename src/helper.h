@@ -16,7 +16,7 @@ typedef struct wc {
   int line;
 } wc;
 
-enum option { all, byte_count, line_count, word_count };
+enum option { byte_count, line_count, word_count };
 
 void help(char *exec);
 
