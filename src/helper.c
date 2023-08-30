@@ -23,24 +23,25 @@ void help(char *exec) {
 } // end `help`
 
 // pretty-prints `wc` results
-void report(char *filename, wc rs, int option) {
+void report(char *filename, wc stat, int option) {
   switch (option) {
   case byte_count:
-    PRETTY_PRINT(rs.bytes, filename);
+    PRETTY_PRINT(stat.bytes, filename);
     break;
   case line_count:
-    PRETTY_PRINT(rs.line, filename);
+    PRETTY_PRINT(stat.line, filename);
     break;
   case word_count:
-    PRETTY_PRINT(rs.word, filename);
+    PRETTY_PRINT(stat.word, filename);
     break;
   default:
-    printf(" 📊%7d %7d %7d %s 📃\n", rs.line, rs.word, rs.bytes, filename);
+    printf(" 📊%7d %7d %7d %s 📃\n", stat.line, stat.word, stat.bytes,
+           filename);
   }
 } // end `report`
 
 // generates or populates `wc` data
-void generate_count(char *filename, wc *rs) {
+void generate_count(char *filename, wc *stat) {
   FILE *file;
   // check if the file exist
   if ((file = fopen(filename, "r")) == NULL) {
@@ -49,19 +50,19 @@ void generate_count(char *filename, wc *rs) {
   }
   int c, last_was_a_space = 0;
   while ((c = fgetc(file)) != EOF) {
-    ++rs->bytes;
+    ++stat->bytes;
     /* **************************** */
     //       💫 LGTM 🚀             //
     /* **************************** */
     if (isspace(c)) {
       // do we have a new line?
       if (c == '\n') {
-        ++rs->line;
+        ++stat->line;
       }
       // do we have a word?
       if (!last_was_a_space) {
         last_was_a_space = 1;
-        ++rs->word;
+        ++stat->word;
       }
     } else {
       last_was_a_space = 0;

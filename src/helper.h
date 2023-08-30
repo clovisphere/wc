@@ -18,8 +18,8 @@ enum option { byte_count, line_count, word_count };
 
 void help(char *exec);
 
-void report(char *filename, wc rs, int option);
+void report(char *filename, wc stat, int option);
 
-void generate_count(char *filename, wc *rs);
+void generate_count(char *filename, wc *stat);
 
 #endif
