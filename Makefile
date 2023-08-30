@@ -1,5 +1,4 @@
 SRC_DIR   := src
-OBJ_DIR   := obj
 BIN_DIR   := bin
 
 # The generated executable file
@@ -26,11 +25,11 @@ all: $(EXE)
 $(EXE): $(OBJ) | $(BIN_DIR)
 	$(CC) $(STD) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) -c $<
 
-$(BIN_DIR) $(OBJ_DIR):
+$(BIN_DIR):
 	mkdir -p $@
 
 clean:
-	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
+	@$(RM) -rv $(BIN_DIR)
