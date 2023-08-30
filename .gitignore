@@ -56,4 +56,3 @@ dkms.conf
 
 # Makefile created folders
 bin/
-obj/
