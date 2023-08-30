@@ -9,15 +9,13 @@ void help(char *exec) {
          "and bytes contained in each input file,\n\tor standard input (if no "
          "file is specified) to the standard output.\n\n"
          "The following options are available:\n"
-         "\t-a\tThe number of lines, words, and bytes in each input file is "
-         "written to the standard output.\n"
          "\t-c\tThe number of bytes in each input file is written to the "
          "standard output.\n"
          "\t-l\tThe number of lines in each input file is written to the "
          "standard output.\n"
          "\t-w\tThe number of words in each input file is written to the "
          "standard output.\n"
-         "\t-m\tThis is equivalent to the -c option.\n"
+         // TODO: add `-m` option to the help message
          "\t-h\tShows this help and exit.\n"
          "\t-v\tPrints the version and exit.\n",
          exec);
@@ -27,9 +25,6 @@ void help(char *exec) {
 // pretty-prints `wc` results
 void report(char *filename, wc rs, int option) {
   switch (option) {
-  case all:
-    printf(" 📊%7d %7d %7d %s 📃\n", rs.line, rs.word, rs.bytes, filename);
-    break;
   case byte_count:
     PRETTY_PRINT(rs.bytes, filename);
     break;
@@ -40,8 +35,7 @@ void report(char *filename, wc rs, int option) {
     PRETTY_PRINT(rs.word, filename);
     break;
   default:
-    fprintf(stderr, "🙀 error: unknown option '-%c'\n", option);
-    exit(EXIT_FAILURE);
+    printf(" 📊%7d %7d %7d %s 📃\n", rs.line, rs.word, rs.bytes, filename);
   }
 } // end `report`
 
