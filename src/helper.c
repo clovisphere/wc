@@ -45,7 +45,7 @@ void generate_count(char *filename, wc *stat) {
   FILE *file;
   // check if the file exist
   if ((file = fopen(filename, "r")) == NULL) {
-    fprintf(stderr, "😾 error: '%s' 🙀 - unable to open file\n", filename);
+    fprintf(stderr, "🙀 error: '%s' - unable to open file\n", filename);
     exit(EXIT_FAILURE);
   }
   int c, last_was_a_space = 0;
