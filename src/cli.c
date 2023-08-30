@@ -40,9 +40,9 @@ int main(int argc, char **argv) {
   // to display (wc) results                              //
   /* **************************************************** */
   for (int i = optind; i < argc; i++) {
-    wc result = {0, 0, 0};
-    generate_count(argv[i], &result);
-    report(argv[i], result, option);
+    wc stat = {0, 0, 0};
+    generate_count(argv[i], &stat);
+    report(argv[i], stat, option);
   }
   return EXIT_SUCCESS;
 }
