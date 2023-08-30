@@ -1,11 +1,9 @@
-#ifndef HELPER_H
-#define HELPER_H
+#ifndef WC_HELPER
+#define WC_HELPER
 
 #include <ctype.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 #define PRETTY_PRINT(count, filename)                                          \
   printf(" 📈%7d %10s 📃\n", count, filename)
