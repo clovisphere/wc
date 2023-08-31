@@ -12,7 +12,7 @@ void version(char *exec) { printf("%s(1) - version %s\n", exec, WC_VERSION); }
 
 // starts program execution
 int main(int argc, char **argv) {
-  int ch, option;
+  int ch, option = -1;
   while ((ch = getopt(argc, argv, "hvclw")) != -1) {
     switch (ch) {
     case 'c':
@@ -39,8 +39,10 @@ int main(int argc, char **argv) {
   // to display (wc) results                              //
   /* **************************************************** */
 
-  // hiold the total stats when we have more than 1 file.
+  // hold the total stats when we have more than 1 file.
   wc total = {0, 0, 0};
+  // number of file processed so far
+  int file_no = 0;
 
   for (int i = optind; i < argc; i++) {
     wc stat = {0, 0, 0};
@@ -53,8 +55,12 @@ int main(int argc, char **argv) {
     total.line += stat.line;
     total.word += stat.word;
     total.bytes += stat.bytes;
+    // this will help with overall stat when we have more than 1 file:-)
+    ++file_no;
   }
-  if (option && argc > 2) {
+  // only display overall stat when we are in
+  // 'default' mode and have processed more than 1 file
+  if (option == -1 && file_no > 1) {
     printf("%-50s\n", SEPARATOR);
     printf("%4s%7d %7d %7d %-15s%2s\n", " 😽", total.line, total.word,
            total.bytes, "[total]", "🧮");

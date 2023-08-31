@@ -34,8 +34,8 @@ void report(char *filename, wc stat, int option) {
     PRETTY_PRINT(stat.word, filename);
     break;
   default:
-    printf(" 📊%7d %7d %7d %-15s%2s\n", stat.line, stat.word, stat.bytes,
-           filename, "📃");
+    printf(" 📊%7d %7d %7d %-15s📃\n", stat.line, stat.word, stat.bytes,
+           filename);
   }
 } // end `report`
 
