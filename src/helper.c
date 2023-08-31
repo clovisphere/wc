@@ -19,7 +19,6 @@ void help(char *exec) {
          "\t-h\tShows this help and exit.\n"
          "\t-v\tPrints the version and exit.\n",
          exec);
-  exit(EXIT_SUCCESS);
 } // end `help`
 
 // pretty-prints `wc` results
