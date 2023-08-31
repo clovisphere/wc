@@ -5,8 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define SEPARATOR "--------------------------------------------"
+
 #define PRETTY_PRINT(count, filename)                                          \
-  printf(" 📈%7d %10s 📃\n", count, filename)
+  printf("%5s%7d %10s 📃\n", "📈", count, filename)
 
 typedef struct wc {
   int bytes;
