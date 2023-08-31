@@ -10,7 +10,6 @@
 // prints the executable version
 void version(char *exec) {
   printf("%s(1) - version %s\n", exec, WC_VERSION);
-  exit(EXIT_SUCCESS);
 }
 
 // starts program execution
@@ -29,8 +28,10 @@ int main(int argc, char **argv) {
       break;
     case 'h':
       help(argv[0]);
+      return EXIT_SUCCESS;
     case 'v':
       version(argv[0]);
+      return EXIT_SUCCESS;
     default:
       return EXIT_FAILURE;
     }
